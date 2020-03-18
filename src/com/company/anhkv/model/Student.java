@@ -1,4 +1,4 @@
-package com.company.anhkv;
+package com.company.anhkv.model;
 
 import java.util.Date;
 

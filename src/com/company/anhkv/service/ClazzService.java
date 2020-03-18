@@ -1,9 +1,8 @@
 package com.company.anhkv.service;
 
-import com.company.anhkv.Clazz;
+import com.company.anhkv.model.Clazz;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -20,6 +19,11 @@ public class ClazzService {
         tmp.setClassName(inputClazzName());
         tmp.studentList = new ArrayList<>();
         clazzList.add(tmp);
+        System.out.println("Bạn có muốn thêm lớp khác 1: yes, 0: no ");
+        int choice = Integer.parseInt(clazzScanner.nextLine());
+        if(choice == 1) {
+            addClazz();
+        }
     }
 
     //edit
@@ -27,8 +31,13 @@ public class ClazzService {
         System.out.println("Nhập mã lớp học muốn sửa: ");
         int clazzId = Integer.parseInt(clazzScanner.nextLine());
         Clazz tmp = findClazzById(clazzId);
+        System.out.println(tmp.toString());
         tmp.setClassName(inputClazzName());
-
+        System.out.println("Bạn có muốn sửa lớp khác 1: yes, 0: no ");
+        int choice = Integer.parseInt(clazzScanner.nextLine());
+        if(choice == 1) {
+            editClazz();
+        }
     }
 
     //delete
@@ -38,11 +47,15 @@ public class ClazzService {
         Clazz tmp = findClazzById(clazzId);
         clazzList.remove(tmp);
         System.out.println("Clazz deleted: " + tmp.toString());
+        System.out.println("Bạn có muốn xóa lớp khác 1: yes, 0: no ");
+        int choice = Integer.parseInt(clazzScanner.nextLine());
+        if(choice == 1) {
+            deleteClazz();
+        }
     }
 
     private Clazz findClazzById(int id) {
-        return clazzList.stream().filter(x -> x.getClassId() == id).collect(Collectors.toList()).get(0);
-
+        return clazzList.stream().filter(x -> x.getClassId() == id).collect(Collectors.toList()).get(0); //tìm cách để collect thành 1 object luôn.
     }
 
 

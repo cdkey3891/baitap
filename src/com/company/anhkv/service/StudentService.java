@@ -1,7 +1,7 @@
 package com.company.anhkv.service;
 
-import com.company.anhkv.Clazz;
-import com.company.anhkv.Student;
+import com.company.anhkv.model.Clazz;
+import com.company.anhkv.model.Student;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +30,11 @@ public class StudentService {
         tmp.setClazz(selectClazz());
         tmp.getClazz().studentList.add(tmp);
         this.allStudentList.add(tmp);
+        System.out.println("Bạn có muốn thêm học sinh khác 1: yes, 0: no ");
+        int choice = Integer.parseInt(studentScanner.nextLine());
+        if(choice == 1) {
+            addStudent();
+        }
     }
 
     //edit
@@ -37,9 +42,15 @@ public class StudentService {
         System.out.println("Nhập ID học sinh muốn sửa: ");
         int studentID = Integer.parseInt(studentScanner.nextLine());
         Student tmp = findStudentById(studentID);
+        System.out.println(tmp.toString());
         tmp.setName(inputName());
         tmp.setDateOfBirth(inputDateOfBirth());
         tmp.setClazz(selectClazz());
+        System.out.println("Bạn có muốn sửa học sinh khác 1: yes, 0: no ");
+        int choice = Integer.parseInt(studentScanner.nextLine());
+        if(choice == 1) {
+            editStudent();
+        }
     }
 
     //delete
@@ -48,7 +59,11 @@ public class StudentService {
         int studentID = Integer.parseInt(studentScanner.nextLine());
         Student tmp = findStudentById(studentID);
         allStudentList.remove(tmp);
-
+        System.out.println("Bạn có muốn xóa học sinh khác 1: yes, 0: no ");
+        int choice = Integer.parseInt(studentScanner.nextLine());
+        if(choice == 1) {
+            deleteStudent();
+        }
     }
 
     private Student findStudentById(int id) {

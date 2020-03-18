@@ -1,4 +1,4 @@
-package com.company.anhkv;
+package com.company.anhkv.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,11 @@ public class Clazz {
     private int classId;
     private String className;
     public List<Student> studentList = new ArrayList<>();
+    private int siso;
+
+    public int getSiso() {
+        return studentList.size();
+    }
 
     public Clazz() {
     }
@@ -29,7 +34,7 @@ public class Clazz {
 
     @Override
     public String toString() {
-        return "Clazz ID: "+ classId + ", Clazz name: "+ className + ", Students: "+studentList.size();
+        return "Clazz ID: "+ classId + ", Clazz name: "+ className + ", Students: "+ this.getSiso();
     }
 
     public void showStudents() {
@@ -40,9 +45,7 @@ public class Clazz {
     public boolean equals(Object obj) {
          if (obj instanceof Clazz) {
              Clazz tmp = (Clazz) obj;
-             if (this.getClassId() == tmp.getClassId()) {
-                 return true;
-             }
+             return this.getClassId() == tmp.getClassId();
          }
          return false;
     }

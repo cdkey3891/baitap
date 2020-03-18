@@ -1,5 +1,7 @@
 package com.company.anhkv;
 
+import com.company.anhkv.model.Student;
+
 import java.util.Comparator;
 
 public class SortStudent implements Comparator<Student> {
