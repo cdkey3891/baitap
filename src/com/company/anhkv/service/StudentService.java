@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class StudentService {
     //them
@@ -35,7 +36,7 @@ public class StudentService {
     public void editStudent() {
         System.out.println("Nhập ID học sinh muốn sửa: ");
         int studentID = Integer.parseInt(studentScanner.nextLine());
-        Student tmp = this.allStudentList.get(studentID-1);
+        Student tmp = findStudentById(studentID);
         tmp.setName(inputName());
         tmp.setDateOfBirth(inputDateOfBirth());
         tmp.setClazz(selectClazz());
@@ -45,7 +46,15 @@ public class StudentService {
     public void deleteStudent() {
         System.out.println("Nhập ID học sinh muốn xóa: ");
         int studentID = Integer.parseInt(studentScanner.nextLine());
+        Student tmp = findStudentById(studentID);
+        allStudentList.remove(tmp);
 
+    }
+
+    private Student findStudentById(int id) {
+        Student tmp;
+        tmp = allStudentList.stream().filter(x -> x.getStudentId() == id).collect(Collectors.toList()).get(0);
+        return tmp;
     }
 
     private Clazz selectClazz() {
@@ -63,6 +72,7 @@ public class StudentService {
         Date tmp = new Date();
         return tmp;
     }
+
     public void showAllStudents() {
         allStudentList.forEach(x -> System.out.println(x.toString()));
     }

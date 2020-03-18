@@ -9,17 +9,8 @@ public class MainApp {
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         ClazzService clazzService = new ClazzService();
-//        clazzService.addClazz();
-//        clazzService.addClazz();
-//        clazzService.showAllClass();
         StudentService studentService = new StudentService();
         studentService.setClazzService(clazzService);
-//        studentService.addStudent();
-//        studentService.addStudent();
-//        clazzService.showStudentOfClazz(1);
-//        clazzService.showAllClass();
-//        studentService.showAllStudents();
-
         showMenu();
         String choice;
         while (true) {
@@ -46,7 +37,8 @@ public class MainApp {
                     showMenu();
                     break;
                 case "6":
-
+                    studentService.deleteStudent();
+                    showMenu();
                     break;
                 case "7":
                     clazzService.showAllClass();
@@ -57,8 +49,12 @@ public class MainApp {
                     showMenu();
                     break;
                 default:
+                    if(choice.equals("0")) {
+                        break;
+                    }
                     System.out.println("Vui lòng chọn lại: ");
                     showMenu();
+                    break;
             }
             if(choice.equals("0")) {
                 break;

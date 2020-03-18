@@ -8,6 +8,9 @@ public class Clazz {
     private String className;
     public List<Student> studentList = new ArrayList<>();
 
+    public Clazz() {
+    }
+
     public int getClassId() {
         return classId;
     }
@@ -33,5 +36,14 @@ public class Clazz {
         studentList.forEach(x -> System.out.println(x.toString()));
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+         if (obj instanceof Clazz) {
+             Clazz tmp = (Clazz) obj;
+             if (this.getClassId() == tmp.getClassId()) {
+                 return true;
+             }
+         }
+         return false;
+    }
 }

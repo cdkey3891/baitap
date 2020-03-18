@@ -3,8 +3,10 @@ package com.company.anhkv.service;
 import com.company.anhkv.Clazz;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class ClazzService {
     private static Scanner clazzScanner = new Scanner(System.in);
@@ -24,29 +26,31 @@ public class ClazzService {
     public void editClazz() {
         System.out.println("Nhập mã lớp học muốn sửa: ");
         int clazzId = Integer.parseInt(clazzScanner.nextLine());
-        this.clazzList.get(clazzId-1).setClassName(inputClazzName());
+        Clazz tmp = findClazzById(clazzId);
+        tmp.setClassName(inputClazzName());
+
     }
 
     //delete
     public void deleteClazz() {
         System.out.println("Nhập mã lớp học muốn xóa: ");
         int clazzId = Integer.parseInt(clazzScanner.nextLine());
-        this.clazzList.remove(clazzId - 1);
-        System.out.println("Clazz deleted: ");
+        Clazz tmp = findClazzById(clazzId);
+        clazzList.remove(tmp);
+        System.out.println("Clazz deleted: " + tmp.toString());
     }
 
-    public Clazz findById(int id) {
-        return clazzList.stream().filter(x -> x.getClassId()==id).collect();
+    private Clazz findClazzById(int id) {
+        return clazzList.stream().filter(x -> x.getClassId() == id).collect(Collectors.toList()).get(0);
+
     }
+
 
     private String inputClazzName() {
         System.out.print("Input Clazz name: ");
         return clazzScanner.nextLine();
     }
 
-    private int inputClazzId() {
-        return 0;
-    }
 
     //show
     public void showStudentOfClazz(int index) {

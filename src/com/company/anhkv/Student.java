@@ -57,4 +57,15 @@ public class Student {
     public String toString() {
         return "ID: "+studentId+", Name: "+ name+", Class: "+clazz.getClassId();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Student) {
+            Student tmp = (Student) obj;
+            if (this.getStudentId() == tmp.getStudentId()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
