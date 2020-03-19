@@ -54,7 +54,7 @@ public class ClazzService {
         }
     }
 
-    private Clazz findClazzById(int id) {
+    public Clazz findClazzById(int id) {
         return clazzList.stream().filter(x -> x.getClassId() == id).collect(Collectors.toList()).get(0); //tìm cách để collect thành 1 object luôn.
     }
 

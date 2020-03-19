@@ -75,7 +75,7 @@ public class StudentService {
     private Clazz selectClazz() {
         System.out.print("Input Clazz ID: ");
         int tmp = Integer.parseInt(studentScanner.nextLine());
-        return clazzService.clazzList.get(tmp-1);
+        return clazzService.findClazzById(tmp);
     }
 
     private String inputName() {
@@ -83,7 +83,7 @@ public class StudentService {
         return studentScanner.nextLine();
     }
     private Date inputDateOfBirth() {
-        System.out.print("Input Student's birthday");
+        System.out.println("Input Student's birthday: (later)");
         Date tmp = new Date();
         return tmp;
     }
