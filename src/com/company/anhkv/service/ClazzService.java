@@ -11,10 +11,10 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class ClazzService {
+
     private static Scanner clazzScanner = new Scanner(System.in);
     public List<Clazz> clazzList = new ArrayList<>();
 
-    //add
     public void addClazz() {
         int clazzListSize = clazzList.size();
         int id = (clazzListSize > 0) ? (clazzList.get(clazzListSize-1).getClassId() + 1) : 1;
@@ -30,7 +30,6 @@ public class ClazzService {
         }
     }
 
-    //edit
     public void editClazz() {
         Clazz tmp = findClazzById();
         if(tmp != null) {
@@ -73,14 +72,11 @@ public class ClazzService {
         return tmpClazz;
     }
 
-
     private String inputClazzName() {
         System.out.print("Input Clazz name: ");
         return clazzScanner.nextLine();
     }
 
-
-    //show
     public void showStudentOfClazz(int index) {
         clazzList.get(index).showStudents();
     }
@@ -88,6 +84,4 @@ public class ClazzService {
     public void showAllClass() {
         clazzList.forEach(x -> System.out.println(x.toString()));
     }
-
-
 }

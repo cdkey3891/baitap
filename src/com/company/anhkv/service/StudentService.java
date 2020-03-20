@@ -9,16 +9,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class StudentService {
-    //them
-    //sua
-    //xóa
+
     private static Scanner studentScanner = new Scanner(System.in);
     private ClazzService clazzService;
     public void setClazzService(ClazzService clazzService) {
         this.clazzService = clazzService;
     }
     private List<Student> allStudentList = new ArrayList<>();
-    //add
+
     public void addStudent() {
         int allStudentListSize = allStudentList.size();
         int id = (allStudentListSize > 0) ? (allStudentList.get(allStudentListSize-1).getStudentId() + 1) : 1;
@@ -48,7 +46,6 @@ public class StudentService {
         return currentYear - year;
     }
 
-    //edit
     public void editStudent() {
         Student tmp = findStudentById();
         System.out.print(tmp.toString());
@@ -62,7 +59,6 @@ public class StudentService {
         }
     }
 
-    //delete
     public void deleteStudent() {
         Student tmp = findStudentById();
         allStudentList.remove(tmp);
@@ -92,6 +88,7 @@ public class StudentService {
         System.out.print("Input Student's name: ");
         return studentScanner.nextLine();
     }
+
     private Date inputDateOfBirth() {
         System.out.print("Input Student's birthday (ddMMyyyy): ");
         String dateOfBirth = studentScanner.nextLine();
@@ -108,6 +105,4 @@ public class StudentService {
     public void showAllStudents() {
         allStudentList.forEach(x -> System.out.println(x.toString()));
     }
-
-
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Clazz {
+
     private int classId;
     private String className;
     public List<Student> studentList = new ArrayList<>();

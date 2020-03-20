@@ -6,7 +6,9 @@ import com.company.anhkv.service.StudentService;
 import java.util.Scanner;
 
 public class MainApp {
+
     private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         ClazzService clazzService = new ClazzService();
         StudentService studentService = new StudentService();
@@ -61,6 +63,7 @@ public class MainApp {
             }
         }
     }
+
     public static void showMenu() {
         System.out.println("-----------menu------------");
         System.out.println("1. Nhập thông tin lớp học.");

@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Student {
+
     private int studentId;
     private String name;
     private Date dateOfBirth;
@@ -45,7 +46,6 @@ public class Student {
     public String getDateOfBirth() {
         SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
         return format.format(dateOfBirth);
-//        return dateOfBirth;
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
