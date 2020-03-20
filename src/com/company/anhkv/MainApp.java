@@ -51,14 +51,14 @@ public class MainApp {
                     showMenu();
                     break;
                 default:
-                    if(choice.equals("0")) {
+                    if (choice.equals("0")) {
                         break;
                     }
                     System.out.println("Vui lòng chọn lại: ");
                     showMenu();
                     break;
             }
-            if(choice.equals("0")) {
+            if (choice.equals("0")) {
                 break;
             }
         }

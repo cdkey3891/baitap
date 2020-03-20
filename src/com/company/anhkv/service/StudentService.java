@@ -12,14 +12,15 @@ public class StudentService {
 
     private static Scanner studentScanner = new Scanner(System.in);
     private ClazzService clazzService;
+    private List<Student> allStudentList = new ArrayList<>();
+
     public void setClazzService(ClazzService clazzService) {
         this.clazzService = clazzService;
     }
-    private List<Student> allStudentList = new ArrayList<>();
 
     public void addStudent() {
         int allStudentListSize = allStudentList.size();
-        int id = (allStudentListSize > 0) ? (allStudentList.get(allStudentListSize-1).getStudentId() + 1) : 1;
+        int id = (allStudentListSize > 0) ? (allStudentList.get(allStudentListSize - 1).getStudentId() + 1) : 1;
         Student tmp = new Student();
         try {
             tmp.setStudentId(id);
@@ -31,11 +32,10 @@ public class StudentService {
             this.allStudentList.add(tmp);
             System.out.print("Bạn có muốn thêm học sinh khác 1: yes, 0: no ");
             String choice = studentScanner.nextLine();
-            if(choice.equals("1")) {
+            if (choice.equals("1")) {
                 addStudent();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("You've got an input error");
         }
     }
@@ -54,7 +54,7 @@ public class StudentService {
         tmp.setClazz(inputClazz());
         System.out.print("Bạn có muốn sửa học sinh khác 1: yes, 0: no ");
         String choice = studentScanner.nextLine();
-        if(choice.equals("1")) {
+        if (choice.equals("1")) {
             editStudent();
         }
     }
@@ -64,7 +64,7 @@ public class StudentService {
         allStudentList.remove(tmp);
         System.out.print("Bạn có muốn xóa học sinh khác 1: yes, 0: no ");
         String choice = studentScanner.nextLine();
-        if(choice.equals("1")) {
+        if (choice.equals("1")) {
             deleteStudent();
         }
     }
@@ -74,7 +74,7 @@ public class StudentService {
         int studentID = Integer.parseInt(studentScanner.nextLine());
         Student tmp = null;
         List<Student> list = allStudentList.stream().filter(x -> x.getStudentId() == studentID).collect(Collectors.toList());
-        if(!list.isEmpty()) {
+        if (!list.isEmpty()) {
             tmp = list.get(0);
         }
         return tmp;

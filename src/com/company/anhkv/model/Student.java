@@ -5,26 +5,26 @@ import java.util.Date;
 
 public class Student {
 
+    public Clazz clazz;
     private int studentId;
     private String name;
     private Date dateOfBirth;
     private int age;
-    public Clazz clazz;
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public Student(int studentId, String name) {
         this.studentId = studentId;
         this.name = name;
     }
 
+    public Student() {
+    }
+
     public int getAge() {
         return age;
     }
 
-    public Student() {
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public int getStudentId() {
@@ -62,7 +62,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "ID: "+studentId+", Name: "+ name+", Class: "+clazz.getClassId()+", Birth: "+this.getDateOfBirth()+", Age: "+age;
+        return "ID: " + studentId + ", Name: " + name + ", Class: " + clazz.getClassId() + ", Birth: " + this.getDateOfBirth() + ", Age: " + age;
     }
 
     @Override

@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Clazz {
 
+    public List<Student> studentList = new ArrayList<>();
     private int classId;
     private String className;
-    public List<Student> studentList = new ArrayList<>();
     private int siso;
+
+    public Clazz() {
+    }
 
     public int getSiso() {
         return studentList.size();
-    }
-
-    public Clazz() {
     }
 
     public int getClassId() {
@@ -35,7 +35,7 @@ public class Clazz {
 
     @Override
     public String toString() {
-        return "Clazz ID: "+ classId + ", Clazz name: "+ className + ", Students: "+ this.getSiso();
+        return "Clazz ID: " + classId + ", Clazz name: " + className + ", Students: " + this.getSiso();
     }
 
     public void showStudents() {
@@ -44,10 +44,10 @@ public class Clazz {
 
     @Override
     public boolean equals(Object obj) {
-         if (obj instanceof Clazz) {
-             Clazz tmp = (Clazz) obj;
-             return this.getClassId() == tmp.getClassId();
-         }
-         return false;
+        if (obj instanceof Clazz) {
+            Clazz tmp = (Clazz) obj;
+            return this.getClassId() == tmp.getClassId();
+        }
+        return false;
     }
 }
