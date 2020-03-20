@@ -1,5 +1,6 @@
 package com.company.anhkv.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Student {
@@ -8,6 +9,10 @@ public class Student {
     private Date dateOfBirth;
     private int age;
     public Clazz clazz;
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public Student(int studentId, String name) {
         this.studentId = studentId;
@@ -37,8 +42,10 @@ public class Student {
         this.name = name;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public String getDateOfBirth() {
+        SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
+        return format.format(dateOfBirth);
+//        return dateOfBirth;
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
@@ -55,7 +62,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "ID: "+studentId+", Name: "+ name+", Class: "+clazz.getClassId();
+        return "ID: "+studentId+", Name: "+ name+", Class: "+clazz.getClassId()+", Birth: "+this.getDateOfBirth()+", Age: "+age;
     }
 
     @Override

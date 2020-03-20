@@ -1,9 +1,12 @@
 package com.company.anhkv.service;
 
+import com.company.anhkv.MainApp;
+import com.company.anhkv.exeption.NotFoundException;
 import com.company.anhkv.model.Clazz;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -20,8 +23,8 @@ public class ClazzService {
         tmp.studentList = new ArrayList<>();
         clazzList.add(tmp);
         System.out.println("Bạn có muốn thêm lớp khác 1: yes, 0: no ");
-        int choice = Integer.parseInt(clazzScanner.nextLine());
-        if(choice == 1) {
+        String choice = clazzScanner.nextLine();
+        if(choice.equals("1")) {
             addClazz();
         }
     }
@@ -31,13 +34,19 @@ public class ClazzService {
         System.out.println("Nhập mã lớp học muốn sửa: ");
         int clazzId = Integer.parseInt(clazzScanner.nextLine());
         Clazz tmp = findClazzById(clazzId);
-        System.out.println(tmp.toString());
-        tmp.setClassName(inputClazzName());
-        System.out.println("Bạn có muốn sửa lớp khác 1: yes, 0: no ");
-        int choice = Integer.parseInt(clazzScanner.nextLine());
-        if(choice == 1) {
-            editClazz();
+        if(tmp != null) {
+            System.out.println(tmp.toString());
+            tmp.setClassName(inputClazzName());
+            System.out.println("Bạn có muốn sửa lớp khác 1: yes, 0: no ");
+            String choice = clazzScanner.nextLine();
+            if(choice.equals("1")) {
+                editClazz();
+            }
+        } else {
+            System.out.println("Clazz not exist");
         }
+
+
     }
 
     //delete
@@ -45,17 +54,27 @@ public class ClazzService {
         System.out.println("Nhập mã lớp học muốn xóa: ");
         int clazzId = Integer.parseInt(clazzScanner.nextLine());
         Clazz tmp = findClazzById(clazzId);
-        clazzList.remove(tmp);
-        System.out.println("Clazz deleted: " + tmp.toString());
-        System.out.println("Bạn có muốn xóa lớp khác 1: yes, 0: no ");
-        int choice = Integer.parseInt(clazzScanner.nextLine());
-        if(choice == 1) {
-            deleteClazz();
+        if(tmp!=null) {
+            clazzList.remove(tmp);
+            System.out.println("Clazz deleted: " + tmp.toString());
+            System.out.println("Bạn có muốn xóa lớp khác 1: yes, 0: no ");
+            String choice = clazzScanner.nextLine();
+            if(choice.equals("1")) {
+                deleteClazz();
+            }
+        } else {
+            System.out.println("Clazz not exist");
         }
     }
 
-    public Clazz findClazzById(int id) {
-        return clazzList.stream().filter(x -> x.getClassId() == id).collect(Collectors.toList()).get(0); //tìm cách để collect thành 1 object luôn.
+    public Clazz findClazzById(int clazzId) {
+        //return clazzList.stream().filter(x -> x.getClassId() == id).collect(Collectors.toList()).get(0); //tìm cách để collect thành 1 object luôn.
+        Clazz tmpClazz= null;
+        List<Clazz> list = clazzList.stream().filter(x -> x.getClassId() == clazzId).collect(Collectors.toList());
+        if(!list.isEmpty()) {
+            tmpClazz= list.get(0);
+        }
+        return tmpClazz;
     }
 
 

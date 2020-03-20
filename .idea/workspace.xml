@@ -3,37 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="df6b62df-841c-43d0-845c-21efc074fc24" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/META-INF/untitled.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/anhkv/model/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled/com/company/anhkv/model/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/anhkv/service/ClazzService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled/com/company/anhkv/service/ClazzService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/anhkv/service/StudentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled/com/company/anhkv/service/StudentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/foreach/foreach$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/foreach/foreach$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/foreach/foreach.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/generic/Animal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/generic/Cat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/generic/Dog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/generic/Generic2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/generic/Genericc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/generic/Runable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/hashtable/hash.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/jdbc/JDBCConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/jdbc/jdbc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/lambda/Hello.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/lambda/Lambda$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/lambda/Lambda.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/lambda/Person.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/set/Mapp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/singleton/Database.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/singleton/Single.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/stream/MyStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/stream/MyStream2$StringProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/stream/MyStream2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/test/Employee.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/test/Manager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/test/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/thread/Thread1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/thread/Thread2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/com/company/thread/thread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/anhkv/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/anhkv/model/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/anhkv/service/ClazzService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/anhkv/service/ClazzService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/anhkv/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/anhkv/service/StudentService.java" afterDir="false" />
     </list>

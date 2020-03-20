@@ -3,10 +3,9 @@ package com.company.anhkv.service;
 import com.company.anhkv.model.Clazz;
 import com.company.anhkv.model.Student;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StudentService {
@@ -28,54 +27,60 @@ public class StudentService {
         tmp.setName(inputName());
         tmp.setDateOfBirth(inputDateOfBirth());
         tmp.setClazz(selectClazz());
+        tmp.setAge(inputAge(tmp.getDateOfBirth()));
         tmp.getClazz().studentList.add(tmp);
         this.allStudentList.add(tmp);
-        System.out.println("Bạn có muốn thêm học sinh khác 1: yes, 0: no ");
-        int choice = Integer.parseInt(studentScanner.nextLine());
-        if(choice == 1) {
+        System.out.print("Bạn có muốn thêm học sinh khác 1: yes, 0: no ");
+        String choice = studentScanner.nextLine();
+        if(choice.equals("1")) {
             addStudent();
         }
     }
 
+    private int inputAge(String date) {
+        int year = Integer.valueOf(date.substring(4));
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        return currentYear - year;
+    }
+
     //edit
     public void editStudent() {
-        System.out.println("Nhập ID học sinh muốn sửa: ");
+        System.out.print("Nhập ID học sinh muốn sửa: ");
         int studentID = Integer.parseInt(studentScanner.nextLine());
         Student tmp = findStudentById(studentID);
-        System.out.println(tmp.toString());
+        System.out.print(tmp.toString());
         tmp.setName(inputName());
         tmp.setDateOfBirth(inputDateOfBirth());
         tmp.setClazz(selectClazz());
-        System.out.println("Bạn có muốn sửa học sinh khác 1: yes, 0: no ");
-        int choice = Integer.parseInt(studentScanner.nextLine());
-        if(choice == 1) {
+        System.out.print("Bạn có muốn sửa học sinh khác 1: yes, 0: no ");
+        String choice = studentScanner.nextLine();
+        if(choice.equals("1")) {
             editStudent();
         }
     }
 
     //delete
     public void deleteStudent() {
-        System.out.println("Nhập ID học sinh muốn xóa: ");
+        System.out.print("Nhập ID học sinh muốn xóa: ");
         int studentID = Integer.parseInt(studentScanner.nextLine());
         Student tmp = findStudentById(studentID);
         allStudentList.remove(tmp);
-        System.out.println("Bạn có muốn xóa học sinh khác 1: yes, 0: no ");
-        int choice = Integer.parseInt(studentScanner.nextLine());
-        if(choice == 1) {
+        System.out.print("Bạn có muốn xóa học sinh khác 1: yes, 0: no ");
+        String choice = studentScanner.nextLine();
+        if(choice.equals("1")) {
             deleteStudent();
         }
     }
 
     private Student findStudentById(int id) {
-        Student tmp;
-        tmp = allStudentList.stream().filter(x -> x.getStudentId() == id).collect(Collectors.toList()).get(0);
+        Student tmp = allStudentList.stream().filter(x -> x.getStudentId() == id).collect(Collectors.toList()).get(0);
         return tmp;
     }
 
     private Clazz selectClazz() {
         System.out.print("Input Clazz ID: ");
-        int tmp = Integer.parseInt(studentScanner.nextLine());
-        return clazzService.findClazzById(tmp);
+        int clazzId = Integer.parseInt(studentScanner.nextLine());
+        return clazzService.findClazzById(clazzId);
     }
 
     private String inputName() {
@@ -83,9 +88,16 @@ public class StudentService {
         return studentScanner.nextLine();
     }
     private Date inputDateOfBirth() {
-        System.out.println("Input Student's birthday: (later)");
-        Date tmp = new Date();
-        return tmp;
+        System.out.print("Input Student's birthday (ddMMyyyy): ");
+        String dateOfBirth = studentScanner.nextLine();
+        Date date = null;
+        SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
+        try {
+            date = format.parse(dateOfBirth);
+        } catch (ParseException e) {
+            System.out.println("Ngày tháng không hợp lệ");
+        }
+        return date;
     }
 
     public void showAllStudents() {
