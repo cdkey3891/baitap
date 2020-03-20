@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class ClazzService {
     private static Scanner clazzScanner = new Scanner(System.in);
     public List<Clazz> clazzList = new ArrayList<>();
+
     //add
     public void addClazz() {
         int clazzListSize = clazzList.size();
@@ -31,9 +32,7 @@ public class ClazzService {
 
     //edit
     public void editClazz() {
-        System.out.println("Nhập mã lớp học muốn sửa: ");
-        int clazzId = Integer.parseInt(clazzScanner.nextLine());
-        Clazz tmp = findClazzById(clazzId);
+        Clazz tmp = findClazzById();
         if(tmp != null) {
             System.out.println(tmp.toString());
             tmp.setClassName(inputClazzName());
@@ -45,15 +44,10 @@ public class ClazzService {
         } else {
             System.out.println("Clazz not exist");
         }
-
-
     }
 
-    //delete
     public void deleteClazz() {
-        System.out.println("Nhập mã lớp học muốn xóa: ");
-        int clazzId = Integer.parseInt(clazzScanner.nextLine());
-        Clazz tmp = findClazzById(clazzId);
+        Clazz tmp = findClazzById();
         if(tmp!=null) {
             clazzList.remove(tmp);
             System.out.println("Clazz deleted: " + tmp.toString());
@@ -67,8 +61,10 @@ public class ClazzService {
         }
     }
 
-    public Clazz findClazzById(int clazzId) {
+    public Clazz findClazzById() {
         //return clazzList.stream().filter(x -> x.getClassId() == id).collect(Collectors.toList()).get(0); //tìm cách để collect thành 1 object luôn.
+        System.out.print("Input Clazz ID: ");
+        int clazzId = Integer.parseInt(clazzScanner.nextLine());
         Clazz tmpClazz= null;
         List<Clazz> list = clazzList.stream().filter(x -> x.getClassId() == clazzId).collect(Collectors.toList());
         if(!list.isEmpty()) {

@@ -13,45 +13,48 @@ public class StudentService {
     //sua
     //xóa
     private static Scanner studentScanner = new Scanner(System.in);
-    ClazzService clazzService;
+    private ClazzService clazzService;
     public void setClazzService(ClazzService clazzService) {
         this.clazzService = clazzService;
     }
-    List<Student> allStudentList = new ArrayList<>();
+    private List<Student> allStudentList = new ArrayList<>();
     //add
     public void addStudent() {
         int allStudentListSize = allStudentList.size();
         int id = (allStudentListSize > 0) ? (allStudentList.get(allStudentListSize-1).getStudentId() + 1) : 1;
         Student tmp = new Student();
-        tmp.setStudentId(id);
-        tmp.setName(inputName());
-        tmp.setDateOfBirth(inputDateOfBirth());
-        tmp.setClazz(selectClazz());
-        tmp.setAge(inputAge(tmp.getDateOfBirth()));
-        tmp.getClazz().studentList.add(tmp);
-        this.allStudentList.add(tmp);
-        System.out.print("Bạn có muốn thêm học sinh khác 1: yes, 0: no ");
-        String choice = studentScanner.nextLine();
-        if(choice.equals("1")) {
-            addStudent();
+        try {
+            tmp.setStudentId(id);
+            tmp.setName(inputName());
+            tmp.setDateOfBirth(inputDateOfBirth());
+            tmp.setClazz(inputClazz());
+            tmp.setAge(inputAge(tmp.getDateOfBirth()));
+            tmp.getClazz().studentList.add(tmp);
+            this.allStudentList.add(tmp);
+            System.out.print("Bạn có muốn thêm học sinh khác 1: yes, 0: no ");
+            String choice = studentScanner.nextLine();
+            if(choice.equals("1")) {
+                addStudent();
+            }
+        }
+        catch (Exception e) {
+            System.out.println("You've got an input error");
         }
     }
 
     private int inputAge(String date) {
-        int year = Integer.valueOf(date.substring(4));
+        int year = Integer.parseInt(date.substring(4));
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         return currentYear - year;
     }
 
     //edit
     public void editStudent() {
-        System.out.print("Nhập ID học sinh muốn sửa: ");
-        int studentID = Integer.parseInt(studentScanner.nextLine());
-        Student tmp = findStudentById(studentID);
+        Student tmp = findStudentById();
         System.out.print(tmp.toString());
         tmp.setName(inputName());
         tmp.setDateOfBirth(inputDateOfBirth());
-        tmp.setClazz(selectClazz());
+        tmp.setClazz(inputClazz());
         System.out.print("Bạn có muốn sửa học sinh khác 1: yes, 0: no ");
         String choice = studentScanner.nextLine();
         if(choice.equals("1")) {
@@ -61,9 +64,7 @@ public class StudentService {
 
     //delete
     public void deleteStudent() {
-        System.out.print("Nhập ID học sinh muốn xóa: ");
-        int studentID = Integer.parseInt(studentScanner.nextLine());
-        Student tmp = findStudentById(studentID);
+        Student tmp = findStudentById();
         allStudentList.remove(tmp);
         System.out.print("Bạn có muốn xóa học sinh khác 1: yes, 0: no ");
         String choice = studentScanner.nextLine();
@@ -72,15 +73,19 @@ public class StudentService {
         }
     }
 
-    private Student findStudentById(int id) {
-        Student tmp = allStudentList.stream().filter(x -> x.getStudentId() == id).collect(Collectors.toList()).get(0);
+    private Student findStudentById() {
+        System.out.print("Input Student ID: ");
+        int studentID = Integer.parseInt(studentScanner.nextLine());
+        Student tmp = null;
+        List<Student> list = allStudentList.stream().filter(x -> x.getStudentId() == studentID).collect(Collectors.toList());
+        if(!list.isEmpty()) {
+            tmp = list.get(0);
+        }
         return tmp;
     }
 
-    private Clazz selectClazz() {
-        System.out.print("Input Clazz ID: ");
-        int clazzId = Integer.parseInt(studentScanner.nextLine());
-        return clazzService.findClazzById(clazzId);
+    private Clazz inputClazz() {
+        return clazzService.findClazzById();
     }
 
     private String inputName() {
