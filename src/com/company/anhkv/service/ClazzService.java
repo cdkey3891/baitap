@@ -74,10 +74,6 @@ public class ClazzService {
         return clazzScanner.nextLine();
     }
 
-    public void showStudentOfClazz(int index) {
-        clazzList.get(index).showStudents();
-    }
-
     public void showAllClass() {
         clazzList.forEach(x -> System.out.println(x.toString()));
     }
