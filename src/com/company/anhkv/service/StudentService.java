@@ -21,15 +21,15 @@ public class StudentService {
     public void addStudent() {
         int allStudentListSize = allStudentList.size();
         int id = (allStudentListSize > 0) ? (allStudentList.get(allStudentListSize - 1).getStudentId() + 1) : 1;
-        Student tmp = new Student();
+        Student tmpStudent = new Student();
         try {
-            tmp.setStudentId(id);
-            tmp.setName(inputName());
-            tmp.setDateOfBirth(inputDateOfBirth());
-            tmp.setClazz(inputClazz());
-            tmp.setAge(inputAge(tmp.getDateOfBirth()));
-            tmp.getClazz().studentList.add(tmp);
-            this.allStudentList.add(tmp);
+            tmpStudent.setStudentId(id);
+            tmpStudent.setName(inputName());
+            tmpStudent.setDateOfBirth(inputDateOfBirth());
+            tmpStudent.setClazz(inputClazz());
+            tmpStudent.setAge(inputAge(tmpStudent.getDateOfBirth()));
+            tmpStudent.getClazz().studentList.add(tmpStudent);
+            this.allStudentList.add(tmpStudent);
             System.out.print("Bạn có muốn thêm học sinh khác 1: yes, 0: no ");
             String choice = studentScanner.nextLine();
             if (choice.equals("1")) {
@@ -47,11 +47,11 @@ public class StudentService {
     }
 
     public void editStudent() {
-        Student tmp = findStudentById();
-        System.out.print(tmp.toString());
-        tmp.setName(inputName());
-        tmp.setDateOfBirth(inputDateOfBirth());
-        tmp.setClazz(inputClazz());
+        Student tmpStudent = findStudentById();
+        System.out.print(tmpStudent.toString());
+        tmpStudent.setName(inputName());
+        tmpStudent.setDateOfBirth(inputDateOfBirth());
+        tmpStudent.setClazz(inputClazz());
         System.out.print("Bạn có muốn sửa học sinh khác 1: yes, 0: no ");
         String choice = studentScanner.nextLine();
         if (choice.equals("1")) {
@@ -60,8 +60,8 @@ public class StudentService {
     }
 
     public void deleteStudent() {
-        Student tmp = findStudentById();
-        allStudentList.remove(tmp);
+        Student tmpStudent = findStudentById();
+        allStudentList.remove(tmpStudent);
         System.out.print("Bạn có muốn xóa học sinh khác 1: yes, 0: no ");
         String choice = studentScanner.nextLine();
         if (choice.equals("1")) {
@@ -72,12 +72,12 @@ public class StudentService {
     private Student findStudentById() {
         System.out.print("Input Student ID: ");
         int studentID = Integer.parseInt(studentScanner.nextLine());
-        Student tmp = null;
+        Student tmpStudent = null;
         List<Student> list = allStudentList.stream().filter(x -> x.getStudentId() == studentID).collect(Collectors.toList());
         if (!list.isEmpty()) {
-            tmp = list.get(0);
+            tmpStudent = list.get(0);
         }
-        return tmp;
+        return tmpStudent;
     }
 
     private Clazz inputClazz() {
@@ -92,14 +92,14 @@ public class StudentService {
     private Date inputDateOfBirth() {
         System.out.print("Input Student's birthday (ddMMyyyy): ");
         String dateOfBirth = studentScanner.nextLine();
-        Date date = null;
+        Date tmpdateOfBirth = null;
         SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
         try {
-            date = format.parse(dateOfBirth);
+            tmpdateOfBirth = format.parse(dateOfBirth);
         } catch (ParseException e) {
             System.out.println("Ngày tháng không hợp lệ");
         }
-        return date;
+        return tmpdateOfBirth;
     }
 
     public void showAllStudents() {

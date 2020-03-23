@@ -15,11 +15,11 @@ public class ClazzService {
     public void addClazz() {
         int clazzListSize = clazzList.size();
         int id = (clazzListSize > 0) ? (clazzList.get(clazzListSize - 1).getClassId() + 1) : 1;
-        Clazz tmp = new Clazz();
-        tmp.setClassId(id);
-        tmp.setClassName(inputClazzName());
-        tmp.studentList = new ArrayList<>();
-        clazzList.add(tmp);
+        Clazz tmpClazz = new Clazz();
+        tmpClazz.setClassId(id);
+        tmpClazz.setClassName(inputClazzName());
+        tmpClazz.studentList = new ArrayList<>();
+        clazzList.add(tmpClazz);
         System.out.print("Bạn có muốn thêm lớp khác 1: yes, 0: no ");
         String choice = clazzScanner.nextLine();
         if (choice.equals("1")) {
@@ -28,10 +28,10 @@ public class ClazzService {
     }
 
     public void editClazz() {
-        Clazz tmp = findClazzById();
-        if (tmp != null) {
-            System.out.println(tmp.toString());
-            tmp.setClassName(inputClazzName());
+        Clazz tmpClazz = findClazzById();
+        if (tmpClazz != null) {
+            System.out.println(tmpClazz.toString());
+            tmpClazz.setClassName(inputClazzName());
             System.out.print("Bạn có muốn sửa lớp khác 1: yes, 0: no ");
             String choice = clazzScanner.nextLine();
             if (choice.equals("1")) {
@@ -43,10 +43,10 @@ public class ClazzService {
     }
 
     public void deleteClazz() {
-        Clazz tmp = findClazzById();
-        if (tmp != null) {
-            clazzList.remove(tmp);
-            System.out.println("Clazz deleted: " + tmp.toString());
+        Clazz tmpClazz = findClazzById();
+        if (tmpClazz != null) {
+            clazzList.remove(tmpClazz);
+            System.out.println("Clazz deleted: " + tmpClazz.toString());
             System.out.print("Bạn có muốn xóa lớp khác 1: yes, 0: no ");
             String choice = clazzScanner.nextLine();
             if (choice.equals("1")) {
